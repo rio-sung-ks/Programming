@@ -1,0 +1,71 @@
+body{
+    font-family: Sono;
+}
+.introduction-text{    
+
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: left;
+    align-content: center;
+    margin: 0px 200px 0px 0px;
+}
+
+.introduction-text2{
+    align-items: center;
+}
+
+
+.container{  
+    display: flex;
+    width: 900px;
+    justify-content: center; 
+}
+.row{
+
+}
+.introduction-img{
+    width: 10%;
+    border-radius: 50%
+}
+
+
+.layout{
+    display: flex;        
+    /* margin: 0 10% 0 10%; */
+}
+
+.company-logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* width: 100%; */
+    width: 20%;
+    border-right: 1px solid lightgray;
+    background-color: white;
+}
+
+.company-experience{
+    margin-left: 4%;
+    width: 80%;
+    /* background-color: lightblue; */
+}
+
+.gradient-background {
+    background: linear-gradient(300deg, #b1842a, #89c940, #a91818bd);
+    background-size: 180% 180%;
+    animation: gradient-animation 10s ease infinite;
+  }
+
+/* .company{
+    font-size: 1.7rem;
+    background-color:lightgray;
+    color: 
+    #712cf9
+} */
+
+.icon{
+    color: gray;
+    width: 28px;
+    height: 36px; 
+    margin-right: 15px;
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mondrian Project</title>
+  <style>
+    /* 
+    Write your CSS here 
+    Gap Colour: #000
+    White: #F0F1EC
+    Red: #E72F24
+    Black: #232629
+    Blue: #004592
+    Yellow: #F9D01E
+
+    For dimensions, see dimensions.png image.
+    HINT: Remember you can't change the properties of grid lines.
+    But grid lines are transparent!
+    */
+
+
+    
+    .container {
+      height: 748px;
+      width: 748px;
+      display: grid;
+      background-color: #000;
+      grid-template-columns: 320px 198px 153px 50px;
+      grid-template-rows: 414px 130px 155px 22px;
+      gap: 9px;
+    }
+    
+    .divt{
+      color: white;
+    }
+    .one{
+      background-color: red;
+      width: 320px;
+      height: 414px;
+    }
+    .two
+    {
+      color: black;
+      background-color: #F0F1EC;
+      grid-column: 2 / 5;
+    }
+    .three{
+      color: black;
+      background-color: #F0F1EC;
+      grid-row: 2 / 4;
+      height: 316px;
+    }
+    .four{
+      color: black;
+      background-color: #F0F1EC;
+      grid-area: 2 / 2 / 4 / 4;
+      width: 360px;
+    }
+    .five{
+      color:white;
+      background-color: #004592;      
+      height: 139px;
+    }
+    .six {
+      color: black;
+      background-color: #F0F1EC;
+      grid-row: 3 / 7;
+
+    }
+    .seven{
+      color: black;
+      background-color: #F0F1EC;
+      grid-row: 4 / 7;
+    }
+    .eight{
+      color: black;
+      background-color: gold;
+      grid-row: 4 / 7;
+
+    } 
+    .nine{
+      color: white;
+      background-color: green;
+      grid-row: 4 / 7;
+    }
+
+  </style>
+</head>
+<!--  -->
+<body>
+  <!-- Write your HTML here -->
+  <div class="container">
+    <div class="divt one">11</div>
+    <div class="divt two">22</div>
+    <div class="divt three">33</div>
+    <div class="divt four">44</div>
+    <div class="divt five">55</div>
+    <div class="divt six">66</div>
+    <div class="divt seven">77</div>
+    <div class="divt eight">88</div>
+    <div class="divt nine">99</div> 
+    
+ 
+  </div>
+
+</body>
+</html>
