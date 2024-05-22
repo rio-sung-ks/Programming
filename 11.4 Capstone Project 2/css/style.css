@@ -1,6 +1,9 @@
+
+
 body{
     font-family: Sono;
 }
+
 .introduction-text{    
 
     font-size: 1.2rem;
@@ -14,20 +17,35 @@ body{
     align-items: center;
 }
 
-
 .container{  
     display: flex;
     width: 900px;
     justify-content: center; 
-}
-.row{
-
 }
 .introduction-img{
     width: 10%;
     border-radius: 50%
 }
 
+@media (max-width: 575px) {
+    
+    .container{  
+        display: flex;
+        width: 300px;
+        justify-content: center; 
+    }
+
+    .row{
+        flex-direction:column;
+        width: 100%;
+
+    }
+
+    .introduction-img{
+        width: 100%;
+    }
+
+}
 
 .layout{
     display: flex;        
@@ -52,7 +70,7 @@ body{
 
 .gradient-background {
     background: linear-gradient(300deg, #b1842a, #89c940, #a91818bd);
-    background-size: 180% 180%;
+    background-size: 280% 180%;
     animation: gradient-animation 10s ease infinite;
   }
 
