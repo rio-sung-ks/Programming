@@ -4,7 +4,7 @@ body{
     font-family: Sono;
 }
 
-.introduction-text{    
+.introduction-text{
 
     font-size: 1.2rem;
     font-weight: bold;
@@ -22,6 +22,7 @@ body{
     width: 900px;
     justify-content: center; 
 }
+
 .introduction-img{
     width: 10%;
     border-radius: 50%
@@ -38,7 +39,6 @@ body{
     .row{
         flex-direction:column;
         width: 100%;
-
     }
 
     .introduction-img{
