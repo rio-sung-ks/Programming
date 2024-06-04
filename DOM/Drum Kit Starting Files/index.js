@@ -2,7 +2,9 @@ var number = document.querySelectorAll(".drum").length;
 
 for (var i=0; i< number; i++){   
     document.querySelectorAll("button")[i].addEventListener("click",function (){
-        var buttonInnerHTML = this.innerHTML;      
+        var buttonInnerHTML = this.innerHTML;
+        makeSound(buttonInnerHTML);
+        buttonAnimation(buttonInnerHTML);    
         // console.log(buttonInnerHTML);  
         switch (buttonInnerHTML) {
             case "w":
@@ -56,7 +58,8 @@ for (var i=0; i< number; i++){
 
 
 document.addEventListener("keypress",function (event){
-    makeSound(event.key); 
+    makeSound(event.key);
+    buttonAnimation(event.key);
 })
 
 function makeSound(key){
@@ -100,7 +103,20 @@ function makeSound(key){
         default:
             // console.log(buttonInnerHTML);
             break;
+            // addEventListener("")
+
     }  
 }             
+
+function buttonAnimation(currenKey){
+    var activeButton = document.querySelector("."+currenKey);
+    activeButton.classList.add("pressed")
+    setTimeout(function(){
+        activeButton.classList.remove("pressed")
+    },100);
     
+    
+    
+
+}
 
