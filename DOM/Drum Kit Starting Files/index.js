@@ -112,7 +112,9 @@ function buttonAnimation(currenKey){
     var activeButton = document.querySelector("."+currenKey);
     activeButton.classList.add("pressed")
     setTimeout(function(){
+        // add classList.add/remove
         activeButton.classList.remove("pressed")
+
     },100);
     
     
