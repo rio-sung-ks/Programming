@@ -1,12 +1,11 @@
 var buttonColours = ["red", "blue", "green", "yellow"];
 var gamePattern = [];
 var userClickedPattern = [];
-
+// var index = 0;
 var level = 0;
 
 $(document).on("keypress",function(){  
   nextSequence(); 
-  // alert("here too!")
 });
 
 $(".btn").click(function(){
@@ -15,6 +14,8 @@ $(".btn").click(function(){
     userClickedPattern.push(userChosenColour);
     playSound(userChosenColour);
     animatePress(userChosenColour);
+    checkAnswer(index)
+
 })
 
 
@@ -41,4 +42,14 @@ function nextSequence(){
 function playSound(name){
     var audio = new Audio("./sound/" + name + '.mp3');
     audio.play();        
+}
+
+
+function checkAnswer(currentLevel){
+  
+//   2. Call checkAnswer() after a user has clicked and chosen their answer, passing in the index of the last answer in the user's sequence.
+// e.g. If the user has pressed red, green, red, yellow, the index of the last answer is 3.
+
+  var index = 
+  
 }
