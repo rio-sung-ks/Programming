@@ -1,0 +1,37 @@
+
+table, th, td{
+    /* border:1px solid black; */
+    border-width: 1px;
+    border-collapse: collapse;
+    padding: 15px;
+    margin: 10%;
+    /* height: 100px; */
+}
+table{
+    border:3px solid rgb(232, 53, 112);  
+    width:900px;
+    height:400px;
+}
+
+.main colgroup col.number{
+    width: 110px;
+}
+.main colgroup col.space{
+    width: 40px;
+}
+
+.table{
+    border-radius: 15px;
+}
+.numbering{
+    background-color: pink; 
+    height:100%;
+    
+}
+
+.cutting{
+    background-color: lightgray; 
+    height: 100%;
+
+}
+

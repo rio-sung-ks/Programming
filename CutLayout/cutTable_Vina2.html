@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VINA 2 Cutting Layout</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>    
+    <table class="main" >
+        <colgroup>
+            <col class="number">
+            <col class="space">
+            <col class="cut">
+            <col class="space">
+            <col class="cut">
+            <col class="space">
+            <col class="number">
+        </colgroup>
+        
+        <thead>
+            <tr>
+                <td colspan="7">table-test</td>
+                </tr>
+            </thead>
+        <tbody>
+        <tr>
+            <td rowspan="2"><div class="numbering table">Numbering 2</div></td>
+            <td rowspan="4"></td>
+
+
+            <td><div class="cutting table">Cutting 2</div></td>
+            <td rowspan="4"></td>
+            <td><div class="cutting table"> Cutting 8</div></td>
+            <td rowspan="4"><div></div></td>
+            <td rowspan="4"><div class="numbering table">Numbering 3</div></td>
+        </tr>
+        <tr>
+            
+            <td><div class="cutting table">Cutting 3</div></td>
+            <td><div class="cutting table">Cutting 7</div></td>
+        </tr>
+        <tr>
+            <td rowspan="2"><div class="numbering table">Numbering 1</div></td>            
+            <td><div class="cutting table">C2</div></td>
+            <td><div class="cutting table">C6</div></td>
+        </tr>
+        <tr>
+            <td><div class="cutting table">Cutting 1</div></td>
+            <td><div class="cutting table">Cutting 5</div></td>
+        </tr>
+         </tbody>
+         <tfoot>
+            <!-- <tr>
+                <td>tfoot</td>
+            </tr>             -->
+         </tfoot>
+    </table>
+
+</body>
+</html>
