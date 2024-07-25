@@ -25,6 +25,7 @@ function passwordCheck(req,res,next){
     next();
 }
 
+
 app.use(passwordCheck);
 app.post("/check",(req,res)=>{
     if(password === "love"){  
