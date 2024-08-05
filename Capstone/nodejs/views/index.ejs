@@ -32,7 +32,7 @@
                                 <form action="/test" method="get">
                                     <!-- <a href="www.google.com"> -->
 
-                                    <a href="/test"> 
+                                    <a href="/test/<%=boardlist[i].indexnumber%>"> 
                                         <!--ejs 파일은 서버단에서 통신해야하기때문에 1.EJS => HTML 로 변환을 거쳐 클라이언트로 보내야함 -->
                                         <%= boardlist[i].subject%> </a></form>
                                     <input type="hidden" name="id" value="<%= boardlist[i].subject%>">
