@@ -10,8 +10,11 @@ app.get("/", (req, res) => {
     htmlContent: "<strong>This is some strong text</strong>",
   };
   res.render("index.ejs", data);
+  
 });
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+
+ 

@@ -1,0 +1,25 @@
+
+.subjectname{
+    background-color: lightblue;
+}
+
+.subject-list {
+    background-color: gainsboro;
+    border-width: 2px solid red;
+
+}
+.button {
+    background-color: yellow;
+}
+
+.container{
+    /* margin-left: 0px; */
+    padding-left: 10px;
+    display: flex;
+    background-color: lightblue;
+    width: 30%;
+    flex-direction: row;    
+    justify-content: space-between;
+    /* justify-content: space-around; */
+
+}

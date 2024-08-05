@@ -15,7 +15,7 @@ function checkDay(){
     let day = '';
     let daytype = '';
     let todo = "";
-
+    day = today2
     day = today2.getDay();
     console.log(day)
 
@@ -23,6 +23,7 @@ function checkDay(){
         console.log("if");
         daytype = "weekend"
         todo = "have a fun"
+
         app.get("/", (req,res) => {
             res.render(__dirname + "/views/index.ejs",
                 {
@@ -32,6 +33,7 @@ function checkDay(){
             );    
         })
     }
+
     else{
         app.get("/", (req,res) => {
             res.render(__dirname + "/views/index.ejs",
@@ -62,6 +64,4 @@ app.get("/", (req,res) => {
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
   });
-
-
 

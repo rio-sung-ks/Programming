@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style/style.css">
+</head>
+<body>
+    <% if (locals.boardlist) { %>
+
+        <h4>Welcome to board 🥑</h4>
+        <form action="/submit" method="post">
+            <!-- <p>user : <input type="text" name = "fuser"></p>
+            <p>password : <input type="text" name = "fpassword"></p> -->
+            <p>subject : <input type="text" name = "fsubject"></p>
+            <!-- <p>contents : <input type="text" name = "fcontents"></p> -->
+            <input type="submit" value="OK">
+        </form>
+
+        <hr>
+        <br>
+        <h4>Subject list :</h4>
+        <div class="subject-list">
+            <ul>
+          
+                <% for(i=0;i<boardlist.length;i++){%>      
+                    <div>     
+                    <form action="/delete" method="post" id="test">
+                        <div class="container">
+                            <div class="each-subject">
+                                <form action="/test" method="get">
+                                    <a href="www.google.com">
+                                    <!-- <a href="./subject.ejs"> -->
+                                        <%= boardlist[i].subject%> </a></form>
+                                    <input type="hidden" name="id" value="<%= boardlist[i].subject%>">
+                            </div>
+                            <div class="each-subject"><button type="submit">delete</button></div>
+                        </div>                         
+                    </form> 
+                    </div>
+                <% }%>       
+                 
+            </ul>
+        </div>
+
+        <!-- index.ejs 로 다시 던지고 아래 리스트 업데이트 -->
+    <% } else {%>
+        <h1>Welcome to bulletin board 🥑</h1>
+        <form action="/submit" method="post">
+            <!-- <p>user : <input type="text" name = "fuser"></p>
+            <p>password : <input type="text" name = "fpassword"></p> -->
+            <p>subject : <input type="text" name = "fsubject"></p>
+            <!-- <p>contents : <input type="text" name = "fcontents"></p> -->
+            <input type="submit" value="OK">
+        </form>
+
+        <!-- fsubject list -->
+        <br><br><br>
+        <hr>
+        <h1>Subject List 📖 :</h1>
+        <ul>
+            <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. </li>
+            <li>Beatae obcaecati porro rem quos ab accusantium iste omnis amet, provident, recusandae nulla expedita. </li>
+            <li>accusantium iste omnis amet, provident</li>
+            <li>Labore quaerat neque dolorem velit rem deserunt aliquam.</li>
+        </ul>
+        <br>
+       <% } %>  
+
+<!-- Footer goes here -->
+<hr>
+<%- include("footer.ejs")  %>
+<!-- <script>
+function remove(){
+    document.getElementById("remove").parentNode.remove();
+}
+</script> -->
+</body>
+</html>
