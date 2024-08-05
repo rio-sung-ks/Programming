@@ -1,28 +1,14 @@
-let dic = [];
-let list = "test1";
-let indexnumber = 0;
-let newNum;
+import fs from 'fs'
 
-dic.push(
-{
-    x : list,
-    y : indexnumber
-});
+//  * Node FS Example
+//  * Node JS Write to File
+//  */
 
-indexnumber = indexnumber + 1;
-console.log(dic)
+let subject = "good";
+var writeStream = fs.createWriteStream(subject+".txt");
 
-dic.push(
-    {
-        x : list,
-        y : indexnumber
-});
+writeStream.write("Hi, JournalDEV Users. ");
+writeStream.write("Thank You.");
 
-indexnumber = indexnumber + 1;
-dic.push(
-    {
-        x : list,
-        y : indexnumber
-});
-console.log(dic)
-console.log(dic.length)
+
+writeStream.end();

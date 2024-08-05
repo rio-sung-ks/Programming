@@ -16,7 +16,7 @@ var check = false;
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req,res) => {
-    res.sendFile(__dirname + "/public/index.html");
+    // res.sendFile(__dirname + "/public/index.html");
 })
 
 function passwordCheck(req,res,next){

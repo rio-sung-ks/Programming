@@ -1,6 +1,10 @@
 import express from "express";
 import bodyParser from "body-parser";
+import fs from 'fs'
+import { dirname } from "path";
+import { fileURLToPath } from "url";
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
 const port = 3000;
 let user = '';
@@ -21,7 +25,12 @@ app.get("/", (req, res) => {
   });
 
 app.get("/test", (req, res) => {
-    res.render("./subject.ejs")
+ 
+    console.log(subject)   
+    res.sendFile(__dirname + "/creation.txt");
+    res.sendFile(__dirname + "/"+subject+".txt");
+    // res.sendFile(subject+".txt");
+    
 });
 
 
@@ -53,6 +62,13 @@ app.post("/submit", (req, res) => {
             indexnumber : indexnumber
         }
     )};
+    var writeStream = fs.createWriteStream(subject+".txt");
+
+    // req.body["fcontets"] 에서 contents 
+    writeStream.write("Hi, JournalDEV Users. ");
+    writeStream.write("Thank You.");
+    writeStream.end();
+
     res.render("./index.ejs",{
         boardlist : dic
     })
