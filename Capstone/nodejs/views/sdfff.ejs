@@ -1,0 +1,66 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="/style/style.css">
+    </head>
+    <body>
+        <% if (locals.boardlist) { %>   <h1>Spraeding Remark : </h1>
+            <form action="/submit" method="post">
+                <!-- <p>user : <input type="text" name = "fuser"></p>
+                <p>password : <input type="text" name = "fpassword"></p> -->
+                <div>
+                    <table class="table">
+                        <tr class="top">
+                            <td class="left">Spreading Remark : </td>
+                            <td class="right"><input type="text" maxlength="20" name = "fsubject" placeholder="제목을 입력하세요" style="width:420px;"></td>
+                        </tr>
+                        <tr class="bottom">
+                            <td class="left"><p>Issue : </p></td>
+                            <td class="right"><textarea id="user-input" name="fcontents" rows="6" cols="50" placeholder="Enter your text here..."></textarea></td>
+                        </tr>         
+                    </table>
+                    <div class="button"><input type="submit" value="Update"></div>
+                </div>
+            </form>
+            <!-- fsubject list -->
+            <br>
+            <hr>
+            <!-- index.ejs 로 다시 던지고 아래 리스트 업데이트 -->
+        <% } else {%>
+            <h1>Spraeding Remark : </h1>
+            <form action="/submit" method="post">
+                <!-- <p>user : <input type="text" name = "fuser"></p>
+                <p>password : <input type="text" name = "fpassword"></p> -->
+                <div>
+                    <table class="table">
+                        <tr class="top">
+                            <td class="left">Spreading Remark : </td>
+                            <td class="right"><input type="text" maxlength="20" name = "fsubject" placeholder="제목을 입력하세요" value="<%= subject%>" style="width:420px;"></td>
+                        </tr>
+                        <tr class="bottom">
+                            <td class="left"><p>Issue : </p></td>
+                            <td class="right"><textarea id="user-input" name="fcontents" rows="6" cols="50" placeholder="Enter your text here..."><%= contents %></textarea></td>
+                        </tr>         
+                    </table>
+                    <div class="button"><input type="submit" value="Update"></div>
+                </div>
+            </form>
+
+            <br>
+    <% } %>  
+
+    <!-- Footer goes here -->
+    <hr>
+    <%- include("footer.ejs")  %>
+    <!-- <script>
+    function remove(){
+        document.getElementById("remove").parentNode.remove();
+    }
+    </script> -->
+    </body>
+    </html>
+    

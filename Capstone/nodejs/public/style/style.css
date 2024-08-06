@@ -1,15 +1,39 @@
+table, td, tr {
+    border:1px solid gainsboro;
+    border-collapse: collapse;
+}
+.left{
+    /* display: flex; */
+    text-align: center;
+    font-size: 15px;
+}
+.button{
+    /* background-color: yellow; */
+    text-align: right;
+    width: 50%;
+}
+tr.top {
+    height: 30px;
+}
+tr.bottom{
+    height: 100px
+}
+td{
+    width: 300px;
+}
 
 .subjectname{
     background-color: lightblue;
+}
+
+.subject-head {
+    background-color: gray;
 }
 
 .subject-list {
     background-color: gainsboro;
     border-width: 2px solid red;
 
-}
-.button {
-    background-color: yellow;
 }
 
 .container{
@@ -21,5 +45,4 @@
     flex-direction: row;    
     justify-content: space-between;
     /* justify-content: space-around; */
-
 }

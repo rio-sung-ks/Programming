@@ -7,20 +7,28 @@
     <link rel="stylesheet" href="/style/style.css">
 </head>
 <body>
-    <% if (locals.boardlist) { %>
-
-        <h4>Welcome to board 🥑</h4>
+    <% if (locals.boardlist) { %>   <h1>Spraeding Remark : </h1>
         <form action="/submit" method="post">
             <!-- <p>user : <input type="text" name = "fuser"></p>
             <p>password : <input type="text" name = "fpassword"></p> -->
-            <p>subject : <input type="text" name = "fsubject"></p>
-            <!-- <p>contents : <input type="text" name = "fcontents"></p> -->
-            <input type="submit" value="OK">
+            <div>
+                <table class="table">
+                    <tr class="top">
+                        <td class="left">Spreading Remark : </td>
+                        <td class="right"><input type="text" maxlength="20" name = "fsubject" placeholder="제목을 입력하세요" style="width:420px;"></td>
+                    </tr>
+                    <tr class="bottom">
+                        <td class="left"><p>Issue : </p></td>
+                        <td class="right"><textarea id="user-input" name="fcontents" rows="6" cols="50" placeholder="Enter your text here..."></textarea></td>
+                    </tr>         
+                </table>
+                <div class="button"><input type="submit" value="OK"></div>
+            </div>
         </form>
-
-        <hr>
+        <!-- fsubject list -->
         <br>
-        <h4>Subject list :</h4>
+        <hr>
+        <h1>List of issues :</h1>
         <div class="subject-list">
             <ul>
           
@@ -48,19 +56,31 @@
 
         <!-- index.ejs 로 다시 던지고 아래 리스트 업데이트 -->
     <% } else {%>
-        <h1>Welcome to bulletin board 🥑</h1>
+        <h1>Spraeding Remark : </h1>
         <form action="/submit" method="post">
             <!-- <p>user : <input type="text" name = "fuser"></p>
             <p>password : <input type="text" name = "fpassword"></p> -->
-            <p>subject : <input type="text" name = "fsubject"></p>
-            <!-- <p>contents : <input type="text" name = "fcontents"></p> -->
-            <input type="submit" value="OK">
+            <div>
+                <table class="table">
+                    <tr class="top">
+                        <td class="left">Spreading Remark : </td>
+                        <td class="right"><input type="text" maxlength="20" name = "fsubject" placeholder="제목을 입력하세요" style="width:420px;"></td>
+                    </tr>
+                    <tr class="bottom">
+                        <td class="left"><p>Issue : </p></td>
+                        <td class="right"><textarea id="user-input" name="fcontents" rows="6" cols="50" placeholder="Enter your text here..."></textarea></td>
+                    </tr>         
+                </table>
+                <div class="button"><input type="submit" value="OK"></div>
+            </div>
         </form>
 
+       
+
         <!-- fsubject list -->
-        <br><br><br>
+        <br>
         <hr>
-        <h1>Subject List 📖 :</h1>
+        <h1>List of issues :</h1>
         <ul>
             <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. </li>
             <li>Beatae obcaecati porro rem quos ab accusantium iste omnis amet, provident, recusandae nulla expedita. </li>
