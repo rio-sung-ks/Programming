@@ -1,4 +1,5 @@
-<!-- index.js 내부에서 subject.ejs 생성용 텍스트로 변환  -->
+
+    <!-- index.js 내부에서 subject.ejs 생성용 텍스트로 변환  -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,8 +9,7 @@
     <link rel="stylesheet" href="/style/style.css">
 </head>
 <body>
-
-    <% if (locals.indexnumber) { %>   <h1>Spreading Remark : </h1>
+    <% if (locals.boardlist) { %>   <h1>Spraeding Remark : </h1>
         <form action="/update/<%=indexnumber%>" method="post">
             <!-- <p>user : <input type="text" name = "fuser"></p>
             <p>password : <input type="text" name = "fpassword"></p> -->
@@ -32,7 +32,7 @@
         <hr>
         <!-- index.ejs 로 다시 던지고 아래 리스트 업데이트 -->
     <% } else {%>
-        <h1>Spreading Remark : </h1>
+        <h1>Spraeding Remark : </h1>
         <form action="/update/<%=indexnumber%>" method="post">
             <!-- <p>user : <input type="text" name = "fuser"></p>
             <p>password : <input type="text" name = "fpassword"></p> -->
@@ -64,3 +64,4 @@ function remove(){
 </script> -->
 </body>
 </html>
+    

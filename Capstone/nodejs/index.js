@@ -26,6 +26,19 @@ app.get("/", (req, res) => {
     res.render("./index.ejs")
   });
 
+// app.get("/test/:id", (req, res) => {
+
+//     const index = parseInt(req.params.id);
+//     const subjectItem = dic.find(item=>item.indexnumber === index);
+//     const filePath = path.join(__dirname, "/views/" + subjectItem.subject + ".ejs");
+//     if(subjectItem){
+//         res.render("./"+subjectItem.subject+".ejs",{
+//             contents : subjectItem.contents,
+//             subject : subjectItem.subject
+//         });
+//     }
+// });
+
 app.get("/test/:id", (req, res) => {
 
     const index = parseInt(req.params.id);
@@ -34,10 +47,13 @@ app.get("/test/:id", (req, res) => {
     if(subjectItem){
         res.render("./"+subjectItem.subject+".ejs",{
             contents : subjectItem.contents,
-            subject : subjectItem.subject
+            subject : subjectItem.subject,
+            indexnumber : subjectItem.indexnumber
+
         });
     }
 });
+
 
 app.post("/delete", (req, res,next) => {
 
@@ -78,70 +94,71 @@ app.post("/delete", (req, res,next) => {
 app.post("/submit", (req, res) => {
 
     const ejsContent = `
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <link rel="stylesheet" href="/style/style.css">
-    </head>
-    <body>
-        <% if (locals.boardlist) { %>   <h1>Spraeding Remark : </h1>
-            <form action="/submit" method="post">
-                <!-- <p>user : <input type="text" name = "fuser"></p>
-                <p>password : <input type="text" name = "fpassword"></p> -->
-                <div>
-                    <table class="table">
-                        <tr class="top">
-                            <td class="left">Spreading Remark : </td>
-                            <td class="right"><input type="text" maxlength="20" name = "fsubject" placeholder="제목을 입력하세요" style="width:420px;"></td>
-                        </tr>
-                        <tr class="bottom">
-                            <td class="left"><p>Issue : </p></td>
-                            <td class="right"><textarea id="user-input" name="fcontents" rows="6" cols="50" placeholder="Enter your text here..."></textarea></td>
-                        </tr>         
-                    </table>
-                    <div class="button"><input type="submit" value="Update"></div>
-                </div>
-            </form>
-            <!-- fsubject list -->
-            <br>
-            <hr>
-            <!-- index.ejs 로 다시 던지고 아래 리스트 업데이트 -->
-        <% } else {%>
-            <h1>Spraeding Remark : </h1>
-            <form action="/submit" method="post">
-                <!-- <p>user : <input type="text" name = "fuser"></p>
-                <p>password : <input type="text" name = "fpassword"></p> -->
-                <div>
-                    <table class="table">
-                        <tr class="top">
-                            <td class="left">Spreading Remark : </td>
-                            <td class="right"><input type="text" maxlength="20" name = "fsubject" placeholder="제목을 입력하세요" value="<%= subject%>" style="width:420px;"></td>
-                        </tr>
-                        <tr class="bottom">
-                            <td class="left"><p>Issue : </p></td>
-                            <td class="right"><textarea id="user-input" name="fcontents" rows="6" cols="50" placeholder="Enter your text here..."><%= contents %></textarea></td>
-                        </tr>         
-                    </table>
-                    <div class="button"><input type="submit" value="Update"></div>
-                </div>
-            </form>
+    <!-- index.js 내부에서 subject.ejs 생성용 텍스트로 변환  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style/style.css">
+</head>
+<body>
+    <% if (locals.boardlist) { %>   <h1>Spraeding Remark : </h1>
+        <form action="/update/<%=indexnumber%>" method="post">
+            <!-- <p>user : <input type="text" name = "fuser"></p>
+            <p>password : <input type="text" name = "fpassword"></p> -->
+            <div>
+                <table class="table">
+                    <tr class="top">
+                        <td class="left">Spreading Remark : </td>
+                        <td class="right"><input type="text" maxlength="20" name = "fsubject" placeholder="제목을 입력하세요" style="width:420px;"></td>
+                    </tr>
+                    <tr class="bottom">
+                        <td class="left"><p>Issue : </p></td>
+                        <td class="right"><textarea id="user-input" name="fcontents" rows="6" cols="50" placeholder="Enter your text here..."></textarea></td>
+                    </tr>         
+                </table>
+                <div class="button"><input type="submit" value="Update"></div>
+            </div>
+        </form>
+        <!-- fsubject list -->
+        <br>
+        <hr>
+        <!-- index.ejs 로 다시 던지고 아래 리스트 업데이트 -->
+    <% } else {%>
+        <h1>Spraeding Remark : </h1>
+        <form action="/update/<%=indexnumber%>" method="post">
+            <!-- <p>user : <input type="text" name = "fuser"></p>
+            <p>password : <input type="text" name = "fpassword"></p> -->
+            <div>
+                <table class="table">
+                    <tr class="top">
+                        <td class="left">Spreading Remark : </td>
+                        <td class="right"><input type="text" maxlength="20" name = "fsubject" placeholder="제목을 입력하세요" value="<%= subject%>" style="width:420px;"></td>
+                    </tr>
+                    <tr class="bottom">
+                        <td class="left"><p>Issue : </p></td>
+                        <td class="right"><textarea id="user-input" name="fcontents" rows="6" cols="50" placeholder="Enter your text here..."><%= contents %></textarea></td>
+                    </tr>         
+                </table>
+                <div class="button"><input type="submit" value="Update"></div>
+            </div>
+        </form>
 
-            <br>
-    <% } %>  
+        <br>
+<% } %>  
 
-    <!-- Footer goes here -->
-    <hr>
-    <%- include("footer.ejs")  %>
-    <!-- <script>
-    function remove(){
-        document.getElementById("remove").parentNode.remove();
-    }
-    </script> -->
-    </body>
-    </html>
+<!-- Footer goes here -->
+<hr>
+<%- include("footer.ejs")  %>
+<!-- <script>
+function remove(){
+    document.getElementById("remove").parentNode.remove();
+}
+</script> -->
+</body>
+</html>
     `;
 
     indexnumber = indexnumber + 1;
@@ -177,10 +194,25 @@ app.post("/update/:id",(req,res,next) => {
 
     const index = parseInt(req.params.id);
     const subjectItem = dic.find(item=>item.indexnumber === index);
-    console.log(contents);
-    subjectItem.contents =  req.body["fcontents"];
-    console.log(contents);
+    
+    // console.log("before : "+ subjectItem.contents);
+    const newContents = req.body["fcontents"];
+    
+    console.log("before : " + dic[indexnumber].contents); 
+    dic[indexnumber].contents = newContents;
+    console.log("after : " + dic[indexnumber].contents);
+
+    res.render("./"+subjectItem.subject+".ejs",{
+        contents : dic[indexnumber].contents,
+        subject : dic[indexnumber].subject,
+        indexnumber : dic[indexnumber].indexnumber
+        });
+
+    // console.log("after : "+ subjectItem.contents);
+    console.log(dic)
+
 });
+
 
 
 app.listen(port, () => {
