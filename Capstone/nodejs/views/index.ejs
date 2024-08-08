@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="/style/style.css">
 </head>
 <body>
+
+    <% console.log("index.ejs is rendering") %>
     <% if (locals.boardlist) { %>   <h1>Spreading Remark : </h1>
         <form action="/submit" method="post">
             <!-- <p>user : <input type="text" name = "fuser"></p>
@@ -75,8 +77,6 @@
             </div>
         </form>
 
-       
-
         <!-- fsubject list -->
         <br>
         <hr>
@@ -98,5 +98,6 @@ function remove(){
     document.getElementById("remove").parentNode.remove();
 }
 </script> -->
+
 </body>
 </html>
