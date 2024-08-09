@@ -8,8 +8,8 @@ import { fileURLToPath } from "url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
 const port = 3000;
-// const subject = '';
-// const contents = '';
+const subject = '';
+const contents = '';
 var dic = [];
 let indexnumber  = -1;
 let deleteValue;
@@ -21,16 +21,19 @@ app.get("/", (req, res) => {
     res.render("./index.ejs")
   });
 
+// app.get("/favicon.ico", (req, res) => res.status(204)); 
+
 app.get("/test/:id", (req, res) => {
 
-    let index = parseInt(req.params.id);
+    const index = parseInt(req.params.id);
     console.log("클릭 index : " + index);
-    let subjectItem = dic.find(item=>item.indexnumber === index);
-    console.log("클릭 subject : " + subjectItem.subject);
-
-    let filePath = path.join(__dirname, "/views/" + subjectItem.subject + ".ejs");
+    const subjectItem = dic.find(item=>item.indexnumber === index);
+    console.log("클릭 subject : " + dic[indexnumber].subject);
+    const filePath = path.join(__dirname, "/views/" + subjectItem.subject + ".ejs");
     console.log("파일경로 : " + filePath);
-    if(subjectItem){
+   
+    
+    if(isNaN(subject)===true || isNaN(subject)===false ){
         res.render("./"+subjectItem.subject+".ejs",{
             subject : subjectItem.subject,
             contents : subjectItem.contents,             
@@ -38,7 +41,6 @@ app.get("/test/:id", (req, res) => {
         });
     }
 });
-
 
 
 app.post("/delete", (req, res,next) => {
@@ -92,7 +94,7 @@ app.post("/submit", async (req, res) => {
 </head>
 <body>
     <% if (locals.indexnumber) { %>   <h1>Spreading Remark : </h1>
-        <form action="/update/<%=indexnumber%>" method="post" id="update-form">
+        <form action="/update/<%=indexnumber%>" method="post" id="update-form1">
             <div>
                 <table class="table">
                     <tr class="top">
@@ -111,7 +113,7 @@ app.post("/submit", async (req, res) => {
         <hr>
     <% } else {%>
         <h1>Spreading Remark : </h1>
-        <form action="/update/<%=indexnumber%>" method="post" id="update-form">
+        <form action="/update/<%=indexnumber%>" method="post" id="update-form2">
             <div>
                 <table class="table">
                     <tr class="top">
@@ -132,7 +134,17 @@ app.post("/submit", async (req, res) => {
 <% } %>  
 <hr>
 <%- include("footer.ejs")  %>
-<script type="text/javascript" src="html.js"></script>
+<script src="./html.js">
+    // document.getElementById('update-form1').addEventListener('submit', function(event) {
+    //     alert("test");
+    //     console.log("this is html.js")
+    // });
+    
+    // document.getElementById('update-form2').addEventListener('submit', function(event) {
+    //     alert("Remark has been updated");
+    //     console.log("this is html.js")
+    // });  
+</script>
 </body>
 </html>
     `;
@@ -174,13 +186,9 @@ app.post("/update/:id",(req,res,next) => {
     let subjectItem = dic.find(item=>item.indexnumber === index);
     console.log("[update] : " + "[before] : " + dic[indexnumber].contents); 
 
-    // res.render("./"+subjectItem.subject+".ejs",{
-    //     contents : dic[indexnumber].contents,
-    //     subject : dic[indexnumber].subject,
-    //     indexnumber : dic[indexnumber].indexnumber
-    //     });
+    res.render("./index.ejs",{
+        });
 
-    alert("Successfully Edited")
     console.log(dic)
 
 });

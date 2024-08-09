@@ -10,7 +10,7 @@
 </head>
 <body>
     <% if (locals.indexnumber) { %>   <h1>Spreading Remark : </h1>
-        <form action="/update/<%=indexnumber%>" method="post" id="update-form">
+        <form action="/update/<%=indexnumber%>" method="post" id="update-form1">
             <div>
                 <table class="table">
                     <tr class="top">
@@ -29,7 +29,7 @@
         <hr>
     <% } else {%>
         <h1>Spreading Remark : </h1>
-        <form action="/update/<%=indexnumber%>" method="post" id="update-form">
+        <form action="/update/<%=indexnumber%>" method="post" id="update-form2">
             <div>
                 <table class="table">
                     <tr class="top">
@@ -50,7 +50,17 @@
 <% } %>  
 <hr>
 <%- include("footer.ejs")  %>
-<script type="text/javascript" src="html.js"></script>
+<script src="./html.js">
+    // document.getElementById('update-form1').addEventListener('submit', function(event) {
+    //     alert("test");
+    //     console.log("this is html.js")
+    // });
+    
+    // document.getElementById('update-form2').addEventListener('submit', function(event) {
+    //     alert("Remark has been updated");
+    //     console.log("this is html.js")
+    // });  
+</script>
 </body>
 </html>
     
