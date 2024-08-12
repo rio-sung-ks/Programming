@@ -134,7 +134,7 @@ app.post("/submit", async (req, res) => {
 <% } %>  
 <hr>
 <%- include("footer.ejs")  %>
-<script src="./html.js">
+<script type="text/javascript" src="../html.js">
     // document.getElementById('update-form1').addEventListener('submit', function(event) {
     //     alert("test");
     //     console.log("this is html.js")
@@ -143,7 +143,7 @@ app.post("/submit", async (req, res) => {
     // document.getElementById('update-form2').addEventListener('submit', function(event) {
     //     alert("Remark has been updated");
     //     console.log("this is html.js")
-    // });  
+    // });
 </script>
 </body>
 </html>
