@@ -1,0 +1,6 @@
+import React from "react";
+import ReactDOM from "react-dom";
+
+ReactDOM.createRoot(
+  <div><h1>test</h1></div>
+  ,document.getElementById("root"));
