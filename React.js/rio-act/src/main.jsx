@@ -4,7 +4,18 @@ import App from './App.jsx'
 import './index.css'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  // <StrictMode>
     <App />
-  </StrictMode>,
+  // </StrictMode>,
 )
+
+
+// import React from 'react';
+// import ReactDOM from 'react-dom/client';
+
+// const rootElement = document.getElementById('root');
+// const root = ReactDOM.createRoot(rootElement);
+
+// root.render(
+//     <div><h1>main.jsx 돌아가는 중</h1></div>
+// );

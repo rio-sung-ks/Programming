@@ -1,6 +1,5 @@
-import React from "react";
-import ReactDOM from "react-dom";
+function App() {
+  return <div>App.jsx 돌아가는 중입니다!</div>;
+}
 
-ReactDOM.render(
-  <div><h1>test</h1></div>
-  ,document.getElementById("root"));
+export default App;
