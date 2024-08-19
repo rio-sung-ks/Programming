@@ -17,5 +17,6 @@
 $$ Git Commit
 git status
 git add .
-git commit -a–m "커밋 메시지"
+git commit -m 'initial commit'
+
 * new file은 커밋 되지 않음.
