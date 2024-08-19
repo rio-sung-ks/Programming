@@ -25,6 +25,9 @@ git push
 
 git pull (저장소에서 가져오기 )
 
+git 문제 있을 시 
+git fsck --full
+
 
 
 https://wecandev.tistory.com/152
