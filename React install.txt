@@ -14,4 +14,8 @@
 4. npm run dev 
 
 
-$$
+$$ Git Commit
+git status
+git add .
+git commit -a–m "커밋 메시지"
+* new file은 커밋 되지 않음.
