@@ -1,0 +1,17 @@
+##  React 설정 (3000)
+
+1. 폴더 생성
+2. Npm install (굳이 안해도 괜찮음)
+3. Npm install react-scripts
+4. npm start
+
+
+## Vite 설정 (5173)   
+
+1. npm create vite@latest
+2. npm create vite@latest [React_폴더이름] --template react
+3. npm install 
+4. npm run dev 
+
+
+$$
