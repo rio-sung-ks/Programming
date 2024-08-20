@@ -6,7 +6,7 @@
 
 3. npm audit fix --force
 4. npm start
-5. +
+
 
 ## Vite 설정 (5173)   
 
@@ -24,6 +24,7 @@ git commit -m 'initial commit'
 git push
 
 git pull (저장소에서 가져오기 )
+git pull https://github.com/rio-sung-ks/Programming.git
 
 git 문제 있을 시 
 git fsck --full
