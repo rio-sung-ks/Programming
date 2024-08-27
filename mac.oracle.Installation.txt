@@ -1,0 +1,14 @@
+
+## 개인 Oracle
+docker exec -it --user=oracle oraclexe3 sqlplus
+name : oraclexe3
+[—user=oracle 을 넣어야함]
+Enter user-name : system
+Password : oracle
+
+
+## 테스트서버 접속 정보
+HOST : ubtest01.ubaseinternational.com
+User : ubase
+SID : UBTEST01
+Character Set : KO16MSWIN949
