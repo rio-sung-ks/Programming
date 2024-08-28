@@ -10,9 +10,15 @@ var consoleIcon = require('/Users/rio/Documents/GitHub/UBI/NodeTest/vicon.js')
 // data.filter((r)=> r[0]==="성경식")
 
 async function displayData() {
+
     try {
         const data = await fetchData();  // 데이터를 비동기적으로 가져옴
         console.log(`${consoleIcon} data : ${JSON.stringify(data)}`);  // 데이터를 문자열로 출력
+        const dataJson = JSON.stringify(data);
+        console.log(`${consoleIcon} dataJson : ${dataJson}`);
+
+        return data;
+
     } catch (error) {
         console.error("Error fetching data:", error);
     }
