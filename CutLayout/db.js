@@ -3,7 +3,7 @@ var oracledb = require('oracledb');
 oracledb.initOracleClient({ libDir: '/Users/rio/Desktop/instantclient' });
 
 
-var consoleIcon = require('/Users/rio/Documents/GitHub/UBI/NodeTest/vicon.js')
+// var consoleIcon = require('/Users/rio/DocumentsGitHub/UBI/NodeTest/vicon.js')
 var dbConfig = require('./dbConfig.js');
 
 

@@ -13,17 +13,19 @@
     <script>
        $(document).ready(function() {
     $.ajax({
-        url: '/api/data',
+        url: '/api/data',  // Node.js 서버의 API 엔드포인트
         method: 'GET',
         dataType: 'json',
         success: function(data) {
-            console.log(data);  // data는 이 블록 안에서만 유효합니다.
-            const $dataList = $('#data-list');
+            console.log('Received data:', data);
+            // const $dataList = $('#data-list');
 
+            // 가져온 데이터를 리스트에 추가
             data.forEach(function(item) {
                 const listItem = $('<li></li>');
                 listItem.text(`Name: ${item.name}, Value: ${item.value}`);
                 $dataList.append(listItem);
+                
             });
         },
         error: function(xhr, status, error) {
@@ -31,8 +33,7 @@
         }
     });
 });
-
-        document.getElementById("data-list").innerHTML = data;
+        
     </script>
 </body>
 </html>
