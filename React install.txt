@@ -16,7 +16,7 @@ test
 4. npm run dev 
 
 
-## 강제 Git Commit
+### 강제 Git Commit
 git status
 git add . 
 
