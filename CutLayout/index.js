@@ -7,7 +7,7 @@ var consoleIcon = require('/Users/rio/Documents/GitHub/UBI/NodeTest/vicon.js')
 // console.log(`${consoleIcon} fetchData : ${fetchData}`);
 
 // console.log(data + consoleIcon );
-// data.filter((r)=> r[0]==="성경식");
+// data.filter((r)=> r[0]==="성경식")
 
 async function displayData() {
     try {
