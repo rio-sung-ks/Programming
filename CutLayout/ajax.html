@@ -3,34 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="referrer" content="no-referrer" /> -->
     <title>AJAX Data Display</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <h1>Data from Server</h1>
+    <form id="LoginForm" onsubmit="return false;">
+        <div>
+            <span>USER ID : </span>
+            <input type="text" id="id" name="id"/>
+        </div>
+        <div>
+            <span>PASSWORD : </span>
+            <input type="password" id="password" name="password" />
+        </div>    
+        <div>
+            <button onclick="submitLogin(this.form)">Sign</button>
+        </div>
+    </form>
+    
     <div id="PeopleList"></ul> <!-- 데이터를 표시할 목록 -->
 
+
     <script>
-    $(document).ready(function() {
-        const url = "http://localhost:3000/api/data";
-/*        
+    function submitLogin(form){ 
+        let id = $('#id').val();
+        let password = $('#password').val();
         let formData = new FormData();
+        formData.append("id", id);
+        formData.append("password", password);
+        
+        let url = "https://webtest.ubaseinternational.com/hypertexERP/api/profile/employee/detail";
+        requestUBISS(url, formData, responseLogin);
+        // requestUBISS(url, "type=JSON", responseLogin);
+    }
+
+
+    function submitBuyerList(form){ 
+
+        let url = "https://webtest.ubaseinternational.com/hypertexERP/api/profile/buyer/list";
+        requestUBISS(url, "type=JSON", responseLogin);
+    }
+
+
+    function responseLogin(data){
+
+        console.log(`Login Result : ${JSON.stringify(data)}`)
+        let html = "";
+        for (const item of data) {
+            html += `<dl><dt>${item.Name}</dt><dd>${item.Value}</dd></dl>`;
+        }
+        $('#PeopleList').html(html);
+
+    }
+
+    $(document).ready(function() {
+        /*
+        let url = "http://localhost:3000/api/data";
+        /* let formData = new FormData();
         formData.append("Name", "JustinKim");
-*/
         let data = "Factory=VINA1";
-        requestPeopleScore(url, data, responsePeopleScore);
+        requestUBISS(url, data, responsePeopleScore);
+
+        url = "http://localhost:3000/api/warehouse";
+        /* let formData = new FormData();
+        formData.append("Name", "JustinKim");
+        data = "Factory=";
+        requestUBISS(url, data, responseWarehouse);
+        */
     })
 
-    function requestPeopleScore(url, data, callbackSuccess, callbackError) {
+    // function reqFunc(a,b,deserver){
+    //     $.ajax({
+    //         url: url, // 
+    //         type: 'get', // [보내는 데이터].
+    //         dataType: 'json', //  [받는 데이터]. 받는 데이터가 없으면 명시하지 않아도 된다
+    //         data: data,  // [보내는 데이터]. 보낼 데이터가 없으면 명시하지 않아도된다
+    //         success: function(){},
+    //         error: function(){}
+    //     })
+    // }
+    // function resFuc(){
+
+    // }
+    function requestUBISS(url, data, callbackSuccess, callbackError) {
         $.ajax({
             url: url,
-            type: 'GET',
-            data: data,
+            type: 'POST',
+            enctype: 'multipart/form-data',
+            acceptCharset: "UTF-8",
+            crossDomain: true,
+            processData : false,
+            contentType : false,
+            data: data, // 보낸 데이터
+            // data: "type=JSON",
             dataType: 'json',
-            success: function(data) {
-                console.log(data);  // data는 이 블록 안에서만 유효합니다.
-                if (callbackSuccess != undefined) {
-                    callbackSuccess(data);
+
+            success: function(result) { // result 보낸 Data를 통해 다시 가져오는 데이터
+                console.log(result);  // data는 이 블록 안에서만 유효합니다.
+                if (callbackSuccess != undefined) { // 통신 성공 시
+                    callbackSuccess(result);
                 } else {                    
                 }
             },
@@ -44,6 +117,7 @@
             }
         });
     }
+
 
     function responsePeopleScore(data) {
         /*
@@ -64,6 +138,19 @@
         $('#PeopleList').html(html);
     }
 
+
+    function responseWarehouse(data) {
+       
+        bindWarehouse(data);
+    }
+        
+    function bindWarehouse(data) {
+        let html = "";
+        for (const item of data) {
+            html += `<dl><dt>${item.Name}</dt><dd>${item.Value}</dd></dl>`;
+        }
+        $('#WarehouseList').html(html);
+    }
 </script>
 </body>
 </html>
