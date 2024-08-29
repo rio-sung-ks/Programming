@@ -8,31 +8,62 @@
 </head>
 <body>
     <h1>Data from Server</h1>
-    <ul id="data-list"></ul> <!-- 데이터를 표시할 목록 -->
+    <div id="PeopleList"></ul> <!-- 데이터를 표시할 목록 -->
 
     <script>
-       $(document).ready(function() {
-    $.ajax({
-        url: '/api/data',
-        method: 'GET',
-        dataType: 'json',
-        success: function(data) {
-            console.log(data);  // data는 이 블록 안에서만 유효합니다.
-            const $dataList = $('#data-list');
+    $(document).ready(function() {
+        const url = "http://localhost:3000/api/data";
+/*        
+        let formData = new FormData();
+        formData.append("Name", "JustinKim");
+*/
+        let data = "Factory=VINA1";
+        requestPeopleScore(url, data, responsePeopleScore);
+    })
 
-            data.forEach(function(item) {
-                const listItem = $('<li></li>');
-                listItem.text(`Name: ${item.name}, Value: ${item.value}`);
-                $dataList.append(listItem);
-            });
-        },
-        error: function(xhr, status, error) {
-            console.error('Error fetching data:', error);
+    function requestPeopleScore(url, data, callbackSuccess, callbackError) {
+        $.ajax({
+            url: url,
+            type: 'GET',
+            data: data,
+            dataType: 'json',
+            success: function(data) {
+                console.log(data);  // data는 이 블록 안에서만 유효합니다.
+                if (callbackSuccess != undefined) {
+                    callbackSuccess(data);
+                } else {                    
+                }
+            },
+            error: function(xhr, status, error) {
+                // console.error('Error fetching data:', error);
+                if (callbackError != undefined) {
+                    callbackError();
+                } else {
+                    console.error('Error fetching data:', error);    
+                }
+            }
+        });
+    }
+
+    function responsePeopleScore(data) {
+        /*
+        let list = [];
+        for (const item of data) {                        
+            list.push({Name  : item[0], Value: item[1]});
         }
-    });
-});
+        bindPeopleScore(list);
+        */
+        bindPeopleScore(data);
+    }
+        
+    function bindPeopleScore(data) {
+        let html = "";
+        for (const item of data) {
+            html += `<dl><dt>${item.Name}</dt><dd>${item.Value}</dd></dl>`;
+        }
+        $('#PeopleList').html(html);
+    }
 
-        document.getElementById("data-list").innerHTML = data;
-    </script>
+</script>
 </body>
 </html>

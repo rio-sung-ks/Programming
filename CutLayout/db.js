@@ -4,7 +4,7 @@ oracledb.initOracleClient({ libDir: '/Users/rio/Desktop/instantclient' });
 
 
 // var consoleIcon = require('/Users/rio/DocumentsGitHub/UBI/NodeTest/vicon.js')
-var dbConfig = require('./dbConfig.js');
+var dbConfig = require('../dbConfig.js');
 
 
 console.log(">>> dbConfig : " + dbConfig.user);

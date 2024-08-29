@@ -1,5 +1,5 @@
 const oracledb = require('oracledb');
-oracledb.initOracleClient({ libDir: '/Users/rio/Desktop/instantclient' });
+oracledb.initOracleClient({ libDir: '/Users/rio/Desktop/instantclient'});
 const dbConfig = require('../dbConfig.js');
 
 async function fetchData() {
