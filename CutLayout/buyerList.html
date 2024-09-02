@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fina Fabric Result</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Buyer List</h1>
+    <form id="buyer" onsubmit="return false;">
+        <div>
+            <span>Order No : </span>
+            <input type="text" id="buyer" name="buyer"/>
+        </div>
+        
+        <div>
+            <button onclick="submitLogin(this.form)">Search</button>
+        </div>
+    </form>
+    
+    <div id="buyerList"></ul> <!-- 데이터를 표시할 목록 -->
+        <div id="buyerList"></div>
+
+    <script>
+    function findFabric(form){ 
+        let paramOrderNo = $('#id').val();
+        let formData = new FormData();
+        formData.append("id", id);    
+        let url = "https://webtest.ubaseinternational.com/hypertexERP/warehouse/tv/find/fabric?factory=CUS2017032289";
+        리퀘스트함수 (url, formData, responseLogin);        
+    }
+
+
+
+
+
+
+
+    function Main함수(){       
+
+        // 변수선언        
+        파라미터1 = 브라우저로부터 수신한 데이터
+        파라미터2 = 브라우저로부터 수신한 폼       
+        new Formdata()를 만들어서 브라우저로부터 수신한 데이터 append
+
+        리퀘스트함수(파리미터1, 파라미터2, 파라미터3(폼), 함수1, 함수2)
+        // 콜백함수는 일반적으로 응답함수 ?
+
+    }
+
+    function 리퀘스트함수(파리미터1, 파라미터2, 파라미터3, 콜백함수(=함수1?), 콜백에러함수){
+        $.ajax({
+            통신방법 정의 
+            필요파라미터전달
+            ,
+            success: 콜백함수 (=함수1 =응답함수),
+            error: 콜백에러함수
+        })}
+
+    var KeepData;
+
+    function 응답함수() {
+        데이터프레젠테이션()
+
+    }
+
+    function 필터함수() {  //브라우져용 
+        // 서버에서 갱신하거나 다시 불러오기 힘들기 때문에 
+        // 브라우져에서 처리한다
+         컬럼정렬
+         필터
+         데이터프레젠테이션 (data)
+    }
+
+    function 정렬함수() {
+        // 서버에서 갱신하거나 다시 불러오기 힘들기 때문에 
+        // 브라우져에서 처리한다
+
+    }
+
+    function 데이터프레젠테이션 (data) {
+        // for loop 데이터 정리
+        // $('#어디')  에 표현
+    }
+
+
+
+</script>
+</body>
+</html>

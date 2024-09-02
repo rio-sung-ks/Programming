@@ -49,7 +49,7 @@
 
 
     function responseLogin(data){
-        let data2 = {
+        let data3 = {
         "DeptNameKor": "IT/생산운영기획",
         "DeptNameEng": "IT/Production Operation & Planning",
         "EmployCode": "20190042",
@@ -57,24 +57,22 @@
         "NameKor": "성경식",
         "NameEng": "Rio Sung"
         };
-        console.log(`Login Result : $`)
+
         let html = "";
-        // for (const item of data ) { // 배열인 경우
-            const employee = data
-            const employee2 = data2
-            // const employee = data;
-            // const employee = JSON.stringify(data);
-            html = `<dl><dt>${employee.DeptNameKor}</dt><dd>${employee.NameEng}</dd></dl>`;
-            html = `<dl><dt>${employee2.DeptNameKor}</dt><dd>${employee2.NameEng}</dd></dl>`;
-        // }
-        // console.log(">>> html : " + html);
-        console.log(">>> data : " + employee.DeptNameKor);
-        console.log(">>> data2 : " + employee2.DeptNameKor);
-        console.log(">>> data1 : " + employee.NameEng);
-        console.log(">>> data2 : " + employee2.NameEng);
+        let html2 = "";
+        const employee = data.data;
+        console.log(employee);
+        console.log(data);
+        const employee2 = data3
+        html = `<dl><dt>${employee.DeptNameKor}</dt><dd>${employee.NameEng}</dd></dl>`;
+        html2 = `<dl><dt>${employee2.DeptNameKor}</dt><dd>${employee2.NameEng}</dd></dl>`;
+        console.log(">>> 서버 data : " + employee.DeptNameKor);
+        console.log(">>> 서버 data : " + employee.NameEng);
+        console.log(">>> 테스트 data2 : " + employee2.DeptNameKor);
+        console.log(">>> 테스트 data2 : " + employee2.NameEng);
         // $('#PeopleList').html(html);
         $('#PeopleList').html(html);
-        // $('#PeopleList2').html(html);
+        $('#PeopleList2').html(html2);
 
     }
 
