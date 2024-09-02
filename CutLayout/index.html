@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="referrer" content="no-referrer" /> -->
+    <title>AJAX Data Display</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Buyer list</h1>
+    
+    <form id="formid" onsubmit="return false;">
+
+        <div>
+            <span>buyer :</span>
+            <input type="text">
+        </div>11111
+        <div>
+            <button onclick="buyerlist(this.form)">Search</button>
+        </div>
+
+    </form>    
+    <span id="contents">hi</span>
+    <script>
+        function buyerlist(){
+            let url = "https://webtest.ubaseinternational.com/hypertexERP/api/profile/employee/detail";
+            let data = "test";
+            request(url, data, response);
+            console.log(">> in buyerlist")
+        }
+
+
+
+        function request(url, data, callbackSuccess, callbackError){
+            console.log(">>> in request")
+            $.ajax({
+                url: url,
+                type: 'GET',
+                // enctype: 'multipart/form-data',
+                // acceptCharset: "UTF-8",
+                crossDomain: true,
+                // processData : false,
+                // contentType : false,
+                data: data, // 보낸 데이터
+                // data: "type=JSON",
+                dataType: 'json',
+                success : function (result){
+                    if(callbackSuccess !== undefined){
+                    console.log("this is error");
+                    callbackSuccess(result);     
+                    }else{}               
+
+                }
+                // error: function(xhr, status, error) {            
+                // console.log("error")
+                }
+            )}
+        
+        function response(data){
+            let data = {
+        "DeptNameKor": "IT/생산운영기획",
+        "DeptNameEng": "IT/Production Operation & Planning",
+        "EmployCode": "20190042",
+        "UserId": "riosung",
+        "NameKor": "성경식",
+        "NameEng": "Rio Sung"
+        };
+            console.log(">>> in the response")
+            // filter(data);    
+            $('#contents').html(data)
+
+        }
+        // function filter(data){
+        //     console.log(">>> in the filter")
+        //     datapresent(data);
+        // }
+        // function datapresent(){
+        //     console.log(">>> in the datapresent")
+        //     // $('#contents').html(data)
+
+        
+
+    </script>    
+</body>
+
+</html>
