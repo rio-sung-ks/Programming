@@ -3,85 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <meta name="referrer" content="no-referrer" /> -->
-    <title>AJAX Data Display</title>
+    <title>data from server</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+
 <body>
-    <h1>Buyer list</h1>
-    
+    <h1>Data from server</h1>
+
     <form id="formid" onsubmit="return false;">
-
         <div>
-            <span>buyer :</span>
-            <input type="text">
-        </div>11111
-        <div>
-            <button onclick="buyerlist(this.form)">Search</button>
+            <span>ID : </span>
+            <input type="text" id="id" name="name">
         </div>
+        <div>
+            <span>PASSWORD :</span>
+            <input type="password" id="password" name="password">
+        </div>
+        <div>
+            <button onClick="main()">Log-in</button>
+        </div>
+        <div id="contents"></div>
+        <div id="contents2"></div>
+    </form>
 
-    </form>    
-    <span id="contents">hi</span>
-    <script>
-        function buyerlist(){
-            let url = "https://webtest.ubaseinternational.com/hypertexERP/api/profile/employee/detail";
-            let data = "test";
-            request(url, data, response);
-            console.log(">> in buyerlist")
-        }
 
 
+<script>
+    function main(){
+        let id = $("#id").val();
+        let password = $("#password").val();
 
-        function request(url, data, callbackSuccess, callbackError){
-            console.log(">>> in request")
-            $.ajax({
-                url: url,
-                type: 'GET',
-                // enctype: 'multipart/form-data',
-                // acceptCharset: "UTF-8",
-                crossDomain: true,
-                // processData : false,
-                // contentType : false,
-                data: data, // 보낸 데이터
-                // data: "type=JSON",
-                dataType: 'json',
-                success : function (result){
-                    if(callbackSuccess !== undefined){
-                    console.log("this is error");
-                    callbackSuccess(result);     
-                    }else{}               
+        let url = "https://webtest.ubaseinternational.com/hypertexERP/api/profile/employee/detail";
+        let formData = new FormData();
+        formData.append("id",id);
+        formData.append("password",password);
+        request(url, formData, response);
 
-                }
-                // error: function(xhr, status, error) {            
-                // console.log("error")
-                }
-            )}
-        
-        function response(data){
-            let data = {
-        "DeptNameKor": "IT/생산운영기획",
-        "DeptNameEng": "IT/Production Operation & Planning",
-        "EmployCode": "20190042",
-        "UserId": "riosung",
-        "NameKor": "성경식",
-        "NameEng": "Rio Sung"
-        };
-            console.log(">>> in the response")
-            // filter(data);    
-            $('#contents').html(data)
+    }
+    function request(url, data, callbackSuccess, callbackError){
+        $.ajax({
+            url : url,
+            data : data,
+            type: 'POST',
+            enctype: 'multipart/form-data',
+            acceptCharset: "UTF-8",
+            crossDomain: true,
+            processData : false,
+            contentType : false,
+            dataType : "json",
 
-        }
-        // function filter(data){
-        //     console.log(">>> in the filter")
-        //     datapresent(data);
-        // }
-        // function datapresent(){
-        //     console.log(">>> in the datapresent")
-        //     // $('#contents').html(data)
+            success : function(result){
+                console.log(`>>> success `);
+                callbackSuccess(result);
+            },
+            error : function(err){
+                console.log(`>>> error `);
+            }
+        })
+    }
+    function response(data){
+        // let data2 = {
+        // "DeptNameKor": "IT/생산운영기획",
+        // "DeptNameEng": "IT/Production Operation & Planning",
+        // "EmployCode": "20190042",
+        // "UserId": "riosung",
+        // "NameKor": "성경식",
+        // "NameEng": "Rio Sung"
+        // };
+        const employee = data.data;
+        $("#contents").html(employee.NameKor);
+        console.log(`>>> employee.NameKor  : ${employee.NameKor}`);
+        $("#contents2").html(employee.DeptNameKor) ;
+        console.log(`>>> employee.DeptNameKor  : ${employee.DeptNameKor}`);
+    }
 
-        
-
-    </script>    
+</script>
 </body>
-
 </html>

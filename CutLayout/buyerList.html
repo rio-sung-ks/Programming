@@ -28,10 +28,7 @@ function getBuyerList(form){
     let buyer = $('#buyer').val() 
     let formData = new FormData();
     formData.append("buyer",buyer);
-
-    let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-    let targetUrl = "https://webtest.u baseinternational.com/hypertexERP/api/profile/buyer/list";
-    let url = proxyUrl + targetUrl;
+    let url = "https://webtest.ubaseinternational.com/hypertexERP/api/profile/buyer/list";
 
     // let url = "https://webtest.ubaseinternational.com/hypertexERP/api/profile/buyer/list";
     console.log(`>>> formData  : ${formData}`);

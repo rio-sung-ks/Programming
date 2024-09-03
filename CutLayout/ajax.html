@@ -6,20 +6,36 @@
     <!-- <meta name="referrer" content="no-referrer" /> -->
     <title>AJAX Data Display</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .ubiss {
+            width: 100%;
+            height: 50%;
+            min-height: calc(100vh - 100px);
+        }
+    </style>
 </head>
 <body>
     <h1>Data from Server</h1>
-    <form id="LoginForm" onsubmit="return false;">
-        <div>
+
+    <!-- <iframe class="ubiss" src="https://webtest.ubaseinternational.com/hypertexERP/factory"></iframe> -->
+    
+    <form id="LoginForm" onsubmit="return false;">  
+        
+        <!-- <div>
             <span>USER ID : </span>
             <input type="text" id="id" name="id"/>
         </div>
         <div>
             <span>PASSWORD : </span>
             <input type="password" id="password" name="password" />
-        </div>    
+        </div>  -->
         <div>
-            <button onclick="submitLogin(this.form)">Sign</button>
+            <span>Buyer : </span>
+            <input type="text" id="buyer" name="buyer">
+        </div>   
+        <div>
+            <!-- <button onclick="submitLogin(this.form)">Sign</button> -->
+            <button onclick="submitLogin(this.form)">Search</button>
         </div>
     </form>
     
@@ -28,51 +44,29 @@
 
     <script>
     function submitLogin(form){ 
-        let id = $('#id').val();
-        let password = $('#password').val();
+        // let id = $('#id').val();
+        // let password = $('#password').val();
+        let buyer = $('#buyer').val();
+
         let formData = new FormData();
-        formData.append("id", id);
-        formData.append("password", password);
-        
-        let url = "https://webtest.ubaseinternational.com/hypertexERP/api/profile/employee/detail";
-        requestUBISS(url, formData, responseLogin);   
+        // formData.append("id", id);
+        // formData.append("password", password);
+        formData.append("buyer", buyer);
+
+        // console.log(`>>> formData : ${formData.get('id')}`);
+        // console.log(`>>> formData : ${formData.get('password')}`);
+        console.log(`>>> formData : ${formData.get('buyer')}`);
+
+        // let url = "https://webtest.ubaseinternational.com/hypertexERP/api/profile/employee/detail";
+        let buyerurl = "https://webtest.ubaseinternational.com/hypertexERP/api/profile/buyer/list";
+        requestUBISS(buyerurl, formData, responseLogin);   
     }
 
-
-    function responseLogin(data){
-        let data2 = {
-        "DeptNameKor": "IT/생산운영기획",
-        "DeptNameEng": "IT/Production Operation & Planning",
-        "EmployCode": "20190042",
-        "UserId": "riosung",
-        "NameKor": "성경식",
-        "NameEng": "Rio Sung"
-        };
-        console.log(`Login Result : $`)
-        let html = "";
-        // for (const item of data ) { // 배열인 경우
-            const employee = data
-            const employee2 = data2
-            // const employee = data;
-            // const employee = JSON.stringify(data);
-            html = `<dl><dt>${employee.DeptNameKor}</dt><dd>${employee.NameEng}</dd></dl>`;
-            html = `<dl><dt>${employee2.DeptNameKor}</dt><dd>${employee2.NameEng}</dd></dl>`;
-        // }
-        // console.log(">>> html : " + html);
-        console.log(">>> data : " + employee.DeptNameKor);
-        console.log(">>> data2 : " + employee2.DeptNameKor);
-        console.log(">>> data1 : " + employee.NameEng);
-        console.log(">>> data2 : " + employee2.NameEng);
-        // $('#PeopleList').html(html);
-        $('#PeopleList').html(html);
-        // $('#PeopleList2').html(html);
-
-    }
-
+    
     function requestUBISS(url, data, callbackSuccess, callbackError) {
         $.ajax({
             url: url,
-            type: 'POST',
+            type: 'GET',
             enctype: 'multipart/form-data',
             acceptCharset: "UTF-8",
             crossDomain: true,
@@ -100,39 +94,73 @@
         });
     }
 
-
-    function responsePeopleScore(data) {
-        /*
-        let list = [];
-        for (const item of data) {                        
-            list.push({Name  : item[0], Value: item[1]});
-        }
-        bindPeopleScore(list);
-        */
-        bindPeopleScore(data);
-    }
-        
-    function bindPeopleScore(data) {
+    function responseLogin(data){
+        // let data2 = {
+        // "DeptNameKor": "IT/생산운영기획",
+        // "DeptNameEng": "IT/Production Operation & Planning",
+        // "EmployCode": "20190042",
+        // "UserId": "riosung",
+        // "NameKor": "성경식",
+        // "NameEng": "Rio Sung"
+        // };
+        console.log(`Login Result : $`)
         let html = "";
-        for (const item of data) {
-            html += `<dl><dt>${item.Name}</dt><dd>${item.Value}</dd></dl>`;
-        }
+
+            // const employee = data.data
+            const buyer = data
+            // console.log(`>>> employee NameKor  : ${employee.NameKor}`);
+            // console.log(`>>> employee DeptNameKor : ${employee.DeptNameKor}`);
+            console.log(`>>> buyer  : ${buyer.CUSTOMER_NAME}`);
+            // const employee2 = data2
+            // const employee = data;
+            // const employee = JSON.stringify(data);
+            // html = `<dl><dt>${employee.DeptNameKor}</dt><dd>${employee.NameEng}</dd></dl>`;
+        // }
+        // console.log(">>> html : " + html);
+        // console.log(">>> data : " + employee.DeptNameKor);
+        // console.log(">>> data2 : " + employee2.DeptNameKor);
+        // console.log(">>> data1 : " + employee.NameEng);
+        // console.log(">>> data2 : " + employee2.NameEng);
+        // $('#PeopleList').html(html);
         $('#PeopleList').html(html);
+        // $('#PeopleList2').html(html);
+
     }
 
 
-    function responseWarehouse(data) {
-       
-        bindWarehouse(data);
-    }
+    // function responsePeopleScore(data) {
+    //     /*
+    //     let list = [];
+    //     for (const item of data) {                        
+    //         list.push({Name  : item[0], Value: item[1]});
+    //     }
+    //     bindPeopleScore(list);
+    //     */
+    //     bindPeopleScore(data);
+    // }
         
-    function bindWarehouse(data) {
-        let html = "";
-        for (const item of data) {
-            html += `<dl><dt>${item.Name}</dt><dd>${item.Value}</dd></dl>`;
-        }
-        $('#WarehouseList').html(html);
-    }
+    // function bindPeopleScore(data) {
+    //     let html = "";
+    //     for (const item of data) {
+    //         html += `<dl><dt>${item.Name}</dt><dd>${item.Value}</dd></dl>`;
+    //     }
+    //     $('#PeopleList').html(html);
+    // }
+
+
+    // function responseWarehouse(data) {
+       
+    //     bindWarehouse(data);
+    // }
+        
+    // function bindWarehouse(data) {
+    //     let html = "";
+    //     for (const item of data) {
+    //         html += `<dl><dt>${item.Name}</dt><dd>${item.Value}</dd></dl>`;
+    //     }
+    //     $('#WarehouseList').html(html);
+    // }
+    
 </script>
 </body>
 </html>

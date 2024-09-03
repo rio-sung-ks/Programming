@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>hi</h1>
+    <form id="formid" onsubmit="return false">
+        <div>
+            <span>ID : </span>
+            <input type="text" id="id" name="id">
+        </div>
+        <div>
+            <span>PASSWORD : </span>
+            <input type="password" id="password" name="password">
+        </div>
+        <button onclick="main()">login</button>
+        <div id="content1"></div>
+        <div id="content2"></div>
+    </form>
+    <script>
+
+        function main(){
+            let url = "https://webtest.ubaseinternational.com/hypertexERP/api/profile/employee/detail";
+            let formdata = new FormData();
+            let id = $('#id').val();
+            let password = $('#password').val();
+            formdata.append("id",id);
+            formdata.append("password",password);
+            request(url, formdata, response);
+        }
+        function request(url, formdata, callbackSuccess, callbackError){
+            $.ajax({
+                url : url,
+                data : formdata,
+                type: 'POST',
+                enctype: 'multipart/form-data',
+                acceptCharset: "UTF-8",
+                crossDomain: true,
+                processData : false,
+                contentType : false,
+                dataType : "json",
+
+                success : function (result){
+                    console.log(`>>>  success`);
+                    response(result)
+                },
+                error : function (){
+                    console.log(`>>>  error`);
+                }
+            })
+
+        }
+        function response(data){
+            filter(data);
+        }
+        function filter(data){
+            datapresent(data);
+        }
+        function datapresent(data){
+            const employee = data.data
+            $('#content1').html(employee.DeptNameEng)
+            $('#content2').html(employee.NameKor)
+
+        }
+    </script>
+</body>
+</html>
+
+<!-- 
+// let data2 = {
+    // "DeptNameKor": "IT/생산운영기획",
+    // "DeptNameEng": "IT/Production Operation & Planning",
+    // "EmployCode": "20190042",
+    // "UserId": "riosung",
+    // "NameKor": "성경식",
+    // "NameEng": "Rio Sung"
+    // }; -->
+
+    
