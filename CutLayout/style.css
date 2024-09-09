@@ -12,7 +12,7 @@ table{
     width: 110px;
 }
 .main colgroup col.space{
-    width: 40px;
+    width: 100px;
 }
 
 .table{
@@ -25,7 +25,7 @@ table{
 }
 
 .numbering{   
-    display: flex;
+    /* display: flex; */
     background-color: pink; 
     height:80%;
     width: 20%;

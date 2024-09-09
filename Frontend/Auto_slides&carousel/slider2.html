@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="ko">
+        <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="./slider2.css">
+        <title>UBISS</title>
+    </head>
+
+    <body>      
+        <style>
+            .hide {display: none !important;}
+            .show {display: block;}
+
+            .menu .main {
+                background-color: #ffffff /* white */
+            }
+
+            .menu .sub {
+                background-color: #ffffff; /* white */
+            }
+
+            /*.menu .main.active, */
+            .menu .sub.active {
+                background-color: #d9f8f8; /* yellow */
+            }
+            
+        </style>
+
+        <div class="wrap">
+            <!-- <div class="mainpage_bg slider"> -->
+                <div class="mainpage_bg container">
+                <div class="slide"></div>
+                
+                <div class="navbar_main">
+                    <a class="navbar_logo" href="#"></a>
+                    <div class="navbar_links">
+                      <a href="https://www.ubaseinternational.com/">HOME</a>
+                      <a href="https://erp.ubaseinternational.com/">UBI</a>
+                      <a href="https://webtest.ubaseinternational.com/hypertexERP/factory/login">UBISS</a>
+                      <a href="https://www.ubaseinternational.com/business/introduction.asp">CONTACT</a>
+                    </div>
+                </div>
+
+                <div class="navbar_overlay"></div>
+
+                <div class="navbar_burger">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                    </svg>
+                </div>
+
+                <div class="navbar_menu">
+                    <a href="#">HOME</a>
+                    <a href="#">UBI</a>
+                    <a href="#">UBISS</a>
+                    <a href="#">CONTACT</a>
+                    <div class="navbar_burger_back">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                        </svg>
+                    </div>
+                </div>
+                <script type="text/javascript" src="navber_scroll.js"></script>
+                <script type="text/javascript" src="navber_burger.js"></script>
+                <div class="header_title">
+                    <h1>UBISS</h1>
+                    <h4>UBI factory Smart System</h4>
+                </div>         
+            </div>
+            </div>
+            <!-- intro end -->
+            <!-- AJAX 연동 해보기 -->
+            
+            <!--<div id="dataContmainer">Loading...</div> 
+            <script>
+                // 예시로 사용할 가상의 데이터
+                var data = {
+                    success: true,
+                    message: "Data successfully loaded!"
+                };
+                
+                // 데이터를 가져와서 HTML에 반영
+                function fetchData() {
+                    setTimeout(function() {
+                        // 가상의 AJAX 요청
+                        // 이 부분에서 실제 서버에서 데이터를 가져오는 AJAX 요청이 이루어질 수 있습니다.
+                        
+                        // 받은 데이터를 처리
+                        if (data.success) {
+                            document.getElementById("dataContainer").textContent = data.message;
+                            document.getElementById("dataContainer").classList.add("success");
+                        } else {
+                            document.getElementById("dataContainer").textContent = "Failed to load data.";
+                            document.getElementById("dataContainer").classList.add("error");
+                        }
+                    }, 2000); // 2초 후에 실행 (가상의 지연 시간)
+                }
+                
+                // fetchData 함수 호출
+                fetchData();
+            </script> -->
+            <div class="status">
+                <ul>
+                    <li>    
+                        <div>
+                            <div class="title">Factory</div>
+                            <div class="slidevalue0 VINA1 ">VINA 1</div>
+                            <div class="slidevalue0 VINA2">VINA 2</div>
+                            <div class="slidevalue0 PHIL1">PHIL 1</div>
+                        </div>
+                    </li> 
+                     <li>    
+                        <div>
+                            <div class="title">창고 관리</div>
+                            <div id="vina1_wh" class="slidevalue1 VINA1">25,445</div>
+                            <div id="vina2_wh" class="slidevalue1 VINA2">75,794</div>
+                            <div id="phil1_wh" class="slidevalue1 PHIL1">11,187</div>
+                        </div>
+                    </li> 
+                    <li>
+                        <div>
+                            <div class="title">원단, 재단관리</div>
+                            <div id="vina1_cut" class="slidevalue2 VINA1">123,456</div>
+                            <div id="vina2_cut" class="slidevalue2 VINA2">789,147</div>
+                            <div id="phil1_cut" class="slidevalue2 PHIL1">622,885</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <div class="title">생산 계획</div>
+                            <div id="vina1_plan" class="slidevalue3 VINA1">305,000+</div>
+                            <div id="vina2_plan" class="slidevalue3 VINA2">400,777+</div>
+                            <div id="phil1_plan" class="slidevalue3 PHIL1">544,450+</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <div class="title">생산 추적</div>
+                            <div id="vina1_track" class="slidevalue4 VINA1">587,573</div>
+                            <div id="vina2_track" class="slidevalue4 VINA2">378,368</div>
+                            <div id="phil1_track" class="slidevalue4 PHIL1">250,195</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <div class="title">품질 관리</div>
+                            <div id="vina1_qa" class="slidevalue5 VINA1">$ 86,958</div>
+                            <div id="vina2_qa" class="slidevalue5 VINA2">$ 16,123</div>
+                            <div id="phil1_qa" class="slidevalue5 PHIL1">$ 52,453</div>
+                        </div>
+                    </li>               
+                </ul>
+            </div>
+            <!-- status end  -->
+
+            <div class="sub_title">
+                <h1>Production Flow Chart</h1>
+                <!-- <div class="sub_title2">FlowChart</div> -->
+
+                <ul class="icons menu">
+
+                    <li class="main warehouse">
+                        <div class="icon_img">
+                            <!--<a href="https://erp.ubaseinternational.com/hypertexERP/warehouse/"> -->
+                            <img src="image/warehousenew.png" alt="warehousenew icon">
+                            </a>
+                        </div>
+                        <div class="icon_menu">
+                            WAREHOUSE
+                        </div>
+                    </li>
+                    <li class="sub warehouse">
+                        <div class="icon_img">
+                            <a href="https://erp.ubaseinternational.com/hypertexERP/warehouse/inspect/fabric">
+                            <img src="image/inspectnew.png" alt="inspectnew icon">
+                            </a>
+                        </div>
+                        <div class="icon_menu">
+                            INSPECT
+                        </div>
+                    </li>
+
+
+                    <li class="main cuttingplan">
+                        <div class="icon_img">
+                            <!-- <a href="https://webtest.ubaseinternational.com/hypertexERP/factory/cutting"> -->
+                            <img src="image/cuttingplan.png" alt="cuttingnew icon">
+                            </a>
+                        </div>
+                        <div class="icon_menu">
+                            CUTTING PLAN
+                        </div>
+                    </li>
+                    <li class="sub cuttingplan">
+                        <div class="icon_img">
+                            <a href="https://webtest.ubaseinternational.com/hypertexERP/factory/spreading">
+                            <img src="image/spreadingplan.png" alt="spreadingnew icon">
+                            </a>
+                        </div>
+                        <div class="icon_menu">
+                            SPREADING PLAN
+                        </div>                     
+                    </li>
+                    <li class="sub cuttingplan">
+                        <div class="icon_img">
+                            <a href="https://webtest.ubaseinternational.com/hypertexERP/factory/spreading">
+                            <img src="image/spreadingnew.png" alt="spreadingnew icon">
+                            </a>
+                        </div>
+                        <div class="icon_menu">
+                            SPREADING
+                        </div>                     
+                    </li>
+
+
+                    <li class="main cutting">
+                        <div class="icon_img">
+                            <!-- <a href="https://webtest.ubaseinternational.com/hypertexERP/factory/cutting"> -->
+                            <img src="image/cuttingnew.png" alt="cuttingnew icon">
+                            </a>
+                        </div>
+                        <div class="icon_menu">
+                            CUTTING
+                        </div>
+                    </li>
+                    <li class="sub cutting">
+                        <div class="icon_img">
+                            <a href="https://webtest.ubaseinternational.com/hypertexERP/factory/cutting">
+                            <img src="image/cutting2.png" alt="cutting2 icon">
+                            </a>
+                        </div>
+                        <div class="icon_menu">
+                            CUTTING
+                        </div>
+                    </li>
+
+
+                    <li class="main sewing">
+                        <div class="icon_img">
+                            <!-- <a href="https://webtest.ubaseinternational.com/hypertexERP/factory/spreading"> -->
+                            <img src="image/sewingnew.png" alt="sewingnew">
+                            </a>
+                        </div>
+                        <div class="icon_menu">
+                            SEWING
+                        </div>
+                    </li>
+                    <li class="sub sewing">
+                        <div class="icon_img">
+                            <a href="#">
+                            <img src="image/sewinginspect.png" alt="sewinginspect icon">
+                            </a>
+                        </div>
+                        <div class="icon_menu">
+                            SEWING INSPECT
+                        </div>                     
+                    </li>
+
+                    
+                    <li class="main packing">
+                        <div class="icon_img">
+                            <a href="#">
+                            <img src="image/packingnew.png" alt="packingnew icon">
+                            </a>
+                        </div>
+                        <div class="icon_menu">
+                            PACKING
+                        </div>                     
+                    </li>
+                    <li class="sub packing">
+                        <div class="icon_img">
+                            <a href="#">
+                            <img src="image/packingnew.png" alt="packingnew icon">
+                            </a>
+                        </div>
+                        <div class="icon_menu">
+                            PACKING
+                        </div>                     
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer">
+            <p>ⓒ UBASE INTERNATIONAL, INC. ALL RIGHTS RESERVED.</p>
+        </div>
+
+       
+    </body>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="./dynamicSlide.js"></script>
+    <script type="text/javascript">
+        
+window.onload = function() {
+    /*$('.menu .sub').addClass('hide');
+    $('.menu .main.warehouse').on('click', function () {
+        $('.menu .sub').addClass('hide');
+        $('.menu .sub.warehouse').removeClass('hide');
+    });
+
+    $('.menu .main.cutting').on('click', function () {
+        $('.menu .sub').addClass('hide');
+        $('.menu .sub.cutting').removeClass('hide');
+    });
+
+    $('.menu .main.sewing').on('click', function () {
+        $('.menu .sub').addClass('hide');
+        $('.menu .sub.sewing').removeClass('hide');
+    });
+*/
+    $('.menu .sub').addClass('hide');
+
+    function toggleSubmenu(menuClass) {
+        const submenu = $('.menu .sub.' + menuClass);
+        if (submenu.hasClass('hide')) {
+            $('.menu .sub').addClass('hide'); // 모든 서브메뉴를 숨깁니다.
+            submenu.removeClass('hide'); // 선택된 서브메뉴를 표시합니다.
+
+            $('.menu .main').removeClass('active'); // 모든 메인 메뉴의 active 클래스를 제거합니다.
+            $('.menu .sub').removeClass('active'); // 모든 서브메뉴의 active 클래스를 제거합니다.
+    
+            $('.menu .main.' + menuClass).addClass('active'); // 선택된 메인 메뉴에 active 클래스를 추가합니다.
+            submenu.addClass('active'); // 선택된 서브메뉴에 active 클래스를 추가합니다.
+        } else {
+            submenu.addClass('hide'); // 선택된 서브메뉴를 숨깁니다.
+            $('.menu .main.' + menuClass).removeClass('active'); // 선택된 메인 메뉴의 active 클래스를 제거합니다.
+            submenu.removeClass('active'); // 선택된 서브메뉴의 active 클래스를 제거합니다.
+        }
+    }
+
+    $('.menu .main.warehouse').on('click', function(event) {
+        event.stopPropagation(); // 이벤트 버블링을 막아 메뉴 외부 클릭 처리가 되지 않도록 함
+        toggleSubmenu('warehouse');
+    });
+
+    $('.menu .main.cuttingplan').on('click', function(event) {
+        event.stopPropagation(); 
+        toggleSubmenu('cuttingplan');
+    });
+
+    $('.menu .main.cutting').on('click', function(event) {
+        event.stopPropagation(); 
+        toggleSubmenu('cutting');
+    });
+
+    $('.menu .main.sewing').on('click', function(event) {
+        event.stopPropagation(); 
+        toggleSubmenu('sewing');
+    });
+
+    $('.menu .main.packing').on('click', function(event) {
+        event.stopPropagation(); 
+        toggleSubmenu('packing');
+    });
+
+
+    // 문서의 아무 곳이나 클릭하면 서브메뉴를 닫음
+    $(document).on('click', function() {
+        $('.menu .sub').addClass('hide');
+        $('.menu .main').removeClass('active'); // 모든 메인 메뉴의 active 클래스를 제거합니다.
+        $('.menu .sub').removeClass('active'); // 모든 서브메뉴의 active 클래스를 제거합니다.
+    });
+
+    // 메뉴 내부를 클릭했을 때는 서브메뉴가 닫히지 않도록 함
+    $('.menu').on('click', function(event) {
+        event.stopPropagation();
+    });  
+    getSheetValue();
+    slideShow(1000);
+}
+</script>
+<script src="./sheetValues.js"></script>
+    
+</html>

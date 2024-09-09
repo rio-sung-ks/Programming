@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="cutstyle.css">
+</head>
+<body>
+    <h1>cut table :</h1>
+    <table>
+        <colgroup>
+            <col class="number">
+            <col class="space">
+            <col class="cut">
+            <col class="space">
+            <col class="cut">
+            <col class="space">
+            <col class="number">
+        </colgroup>
+        
+        <thead><tr><td id="content" colspan="7" style="font-size: 30px; font-weight: bold;">Loading...</td></tr></thead>
+            
+        <tbody>
+            <tr>
+                <td rowspan="2"><div class="numbering table">numbering 1</div></td>
+                <td rowspan="4"></td>
+                <td><div class="cutting table">Cutting 1</div></td>
+                <td rowspan="4"></td>
+                <td style="text-align: left;"><div class="cutting smalltable" style="margin-left: 5%;">Cutting 8</div></td>
+                <!-- <td class="cutting small table">Cutting 8</td> -->
+                <td rowspan="4"></td>
+                <td rowspan="4"><div class="numbering table">numbering 3</div></td>
+            </tr>
+            <tr>
+                <!-- <td>>>></td> -->
+                <!-- <td>>>></td> -->
+                <td><div class="cutting table">Cutting 3</div></td>
+                <!-- <td>>>></td> -->
+                <td><div class="cutting table">Cutting 7</div></td>
+                <!-- <td>>>></td> -->
+                <!-- <td>>>></td> -->
+            </tr>
+            <tr>
+                <td rowspan="2"><div class="numbering table">numbering 2</div></td>
+                <!-- <td>>>></td> -->
+                <td><div class="cutting table">Cutting 5</div></td>
+                <!-- <td>>>></td> -->
+                <td><div class="cutting table">Cutting 6</div></td>
+                <!-- <td>>>></td> -->
+                <!-- <td>>>></td> -->
+            </tr>
+            <tr>
+                <!-- <td>>>></td> -->
+                <!-- <td>>>></td> -->
+                <td><div class="cutting table">Cutting 7</div></td>
+                <!-- <td>>>></td> -->
+                <td><div class="cutting table">Cutting 5</div></td>
+                <!-- <td>>>></td> -->
+                <!-- <td>>>></td> -->
+            </tr>
+
+        </tbody>
+
+    </table>
+    <script>
+        const apiKey = 'AIzaSyC4NDy7L_SFNMMJq5vHXyggo-CMYC2UYVk';  // Google API 키
+        const spreadsheetId = '1OaDPMQXrWSe1s9KQJi25lHxyRp_eSpBRVVR1WgZJxys';  // 스프레드시트 ID
+        const range = 'Sheet1!A1';  // 가져올 범위 (예: A1 셀)
+        const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey}`;
+        console.log(url)
+        // 시트 이름이 정확한지 확인하세요. 
+        // 시트 이름이 정확하지 않으면, "400 Bad Request" 오류가 발생할 수 있습니다.
+        fetch(`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.values && data.values.length > 0) {
+                    const cellValue = data.values[0][0];  // A1 셀의 값
+                    document.getElementsByClassName("slidevalue1 VINA1").textContent = cellValue;
+                } else {
+                    document.getElementsByClassName("slidevalue1 VINA1").textContent = 'No data found';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementsByClassName("slidevalue1 VINA1").textContent = 'Error loading data';
+            });
+    </script>
+</body>
+</html>

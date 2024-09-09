@@ -8,74 +8,75 @@
 </head>
 <body>
     <h1>buyer List</h1>
-    <form id="buyer" onsubmit="return false;">
         <div>
             <span>buyer : </span>
             <input type="text" id="buyer" name="buyer"/>
-        </div>
-        
+        </div>        
         <div>
-            <button onclick="getBuyerList(this.form)">Search</button>
+            <button onclick="getBuyerList()">Search</button>
         </div>
-    </form>
-    
     <div id="buyerList"></ul> <!-- 데이터를 표시할 목록 -->
-        <div id="buyerList2"></div>
-
 <script>
 
-function getBuyerList(form){
+
+function getBuyerList(){
     let buyer = $('#buyer').val() 
     let formData = new FormData();
     formData.append("buyer",buyer);
-    let url = "https://webtest.ubaseinternational.com/hypertexERP/api/profile/buyer/list";
+    let url = "https://webtest.ubaseinternational.com/hypertexERP/api/profile/custom/list";
 
-    // let url = "https://webtest.ubaseinternational.com/hypertexERP/api/profile/buyer/list";
-    console.log(`>>> formData  : ${formData}`);
-    request(url, formData, response)
+    console.log(`>>> buyer : ${buyer}`);
+    let data = "keyword=" + buyer;
+    request(url, data, response)
     
 }
-function request(url, formData, callbackSuccess, callbackError ){
+function request(url, data, callbackSuccess, callbackError ){
     
     console.log(`>>> request 함수 안`);
     $.ajax({
-        url : url, 
-        type : 'POST',
-        enctype: 'multipart/form-data',
-        acceptCharset: "UTF-8",
+        url : url + "?type=json",
+
+        data : data,
+        type : "GET",
+        // GET 방식일때는 아래 선언들 comment out
+        // enctype: 'multipart/form-data',
         crossDomain: true,
-        processData : false,
-        contentType : false,
-        data : formData,
-        dataType : 'json',
+        // acceptCharset: "UTF-8",        
+        // processData : false,
+        // contentType : false,
+        dataType : "json",  
         
         success : function(result){
+            console.log("here")
             console.log(result)
+            console.log("there")
             if(callbackSuccess !== undefined){
                 callbackSuccess(result);
             } else{}
         },
-        error: function(xhr, status, error) {
-            
+        error: function() {
             console.log("error");
         }
     })
 }
+
 function response(result){
     console.log(`>>> response 함수 안`);
     filter(result)
 }
 function filter(result){
-    console.log(`>>> filter 함수 안`);
     datapresent(result)
 }
 function datapresent(result){
-    console.log(`>>> datapresent 함수 안`);
-    console.log(`>>>  result : ${result}`);
+    const data_CUSTOMER_CODE = result[0].CUSTOMER_CODE;    
 
-    $
-    // table / for / html
-    $('#buyerList').html(result)
+    console.log(result);
+    console.log(">>> result : " + result[0]);
+    console.log(`>>>  : ${result[0].CUSTOMER_CODE}`);
+    console.log(`>>> data_CUSTOMER_CODE : ${data_CUSTOMER_CODE}`);
+    // $('#buyerList').html(result)
+    
+
 }
 
 

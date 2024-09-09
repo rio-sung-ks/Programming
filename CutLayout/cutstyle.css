@@ -1,0 +1,54 @@
+table{
+
+    border: 3px solid black;
+    border-collapse: collapse;
+    /* border-collapse: collapse; */
+    
+    width: 1500px;
+    height: 800px;
+}
+
+td {
+    border: 3px solid lightblue;
+    text-align: center;
+}
+
+td > div{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.numbering{
+    background-color: pink;    
+    width: 65%;
+    height: 80%;
+}
+.cutting{
+    background-color: lightgray;
+    height: 40%;
+    width: 90%;
+}
+.table{
+    border-radius: 20px;
+
+}
+.smalltable{
+
+    border-radius: 20px;
+    text-align: left;
+    width: 60%;
+
+}
+
+.cut {
+    width: 400px;
+}
+.number{
+    width: 100px;
+}
+
+colgroup col.space{
+    width:50px;
+}

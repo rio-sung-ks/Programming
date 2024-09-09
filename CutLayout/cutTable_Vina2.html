@@ -1,3 +1,12 @@
+1. layout reaffirm # niranjan
+2. daily or regular cut / spreading (phase2) data sheet load. for V2 # liam if
+3. structure / design again (html / css) # rio
+4.
+
+=> 2-1 instead of sheet, try to use sql
+=> 3-1 with bootstrap.
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +16,7 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>    
-    <table class="main" >
+    <table class="main">
         <colgroup>
             <col class="number">
             <col class="space">
@@ -17,48 +26,67 @@
             <col class="space">
             <col class="number">
         </colgroup>
-        
+
         <thead>
             <tr>
                 <td colspan="7">table-test</td>
-                </tr>
-            </thead>
+            </tr>
+        </thead>
         <tbody>
-        <tr>
-            <td rowspan="2"><div class="numbering table">Numbering 2</div></td>
-            <td rowspan="4"></td>
-
-            <td><div class="cutting table" id="test">Cutting 2</div></td>
-            <td rowspan="4"></td>
-            <td><div class="cutting table"> Cutting 8</div></td>
-            <td rowspan="4"><div></div></td>
-            <div class="test"><td rowspan="4"><div class="numbering table">Numbering 3</div></td></div>
-        </tr>
-        <tr>            
-            <td><div class="cutting table">Cutting 3</div></td>
-            <td><div class="cutting table">Cutting 7</div></td>
-        </tr>
-        <tr>
-            <td rowspan="2"><div class="numbering table">Numbering 1</div></td>            
-            <td><div class="cutting table">C2</div></td>
-            <td><div class="cutting table">C6</div></td>
-        </tr>
-        <tr>
-            <td><div class="cutting table">Cutting 1</div></td>
-            <td><div class="cutting table">Cutting 5</div></td>
-            
-            
-        </tr>
-         </tbody>
-         <tfoot>
-            <!-- <tr>
-                <td>tfoot</td>
-            </tr>             -->
-         </tfoot>
+            <tr>
+                <td rowspan="2"><div class="numbering table">Numbering 2</div></td>
+                <td rowspan="4"></td>
+                <td><div class="cutting table" id="test-content" style="font-size: 30px; color:purple";>Loading...</div></td>
+                <td rowspan="4"></td>
+                <td><div class="cutting table" id="test-content2" style="font-size: 30px; color: purple;">Loading...</div></td>
+                <td rowspan="4"><div></div></td>
+                <div class="test"><td rowspan="4"><div class="numbering table">Numbering 3</div></td></div>
+            </tr>
+            <tr>
+                <td><div class="cutting table">Cutting 3</div></td>
+                <td><div class="cutting table">Cutting 7</div></td>
+            </tr>
+            <tr>
+                <td rowspan="2"><div class="numbering table">Numbering 1</div></td>            
+                <td><div class="cutting table">C2</div></td>
+                <td><div class="cutting table">C6</div></td>
+            </tr>
+            <tr>
+                <td><div class="cutting table">Cutting 1</div></td>
+                <td><div class="cutting table">Cutting 5</div></td>
+            </tr>
+        </tbody>
     </table>
 
+    <script>
+        //https://docs.google.com/spreadsheets/d/1OaDPMQXrWSe1s9KQJi25lHxyRp_eSpBRVVR1WgZJxys/edit?gid=0#gid=0
+        // DFR - test 
+        const apiKey = 'AIzaSyC4NDy7L_SFNMMJq5vHXyggo-CMYC2UYVk';  // Google API 키
+        const spreadsheetId = '1OaDPMQXrWSe1s9KQJi25lHxyRp_eSpBRVVR1WgZJxys';  // 스프레드시트 ID
+        const range = "dfrData";  // A1:A2 지정한 사용자 정의 'dfrData' 로 캡쳐가능
+        const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey}`;
+        console.log(url)
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.values && data.values.length > 0) {
+                    const cellValue = data.values[0][0];  // A1 셀의 값
+                    const cellValue2 = data.values[1][0]; 
+                    document.getElementById("test-content").textContent = cellValue;
+                    document.getElementById("test-content2").textContent = cellValue2;
+                } else {
+                    document.getElementById("content").textContent = 'No data found';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById("test-content").textContent = 'Error loading data';
+            });
+    </script>
 </body>
-<script src="./main.js">
-    // document.getElementById("test").textContent = "test";
-</script>
 </html>
