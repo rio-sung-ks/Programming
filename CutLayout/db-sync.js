@@ -26,4 +26,4 @@ async function fetchData() {
     }
 }
 
-module.exports = fetchData;  // fetchData 함수를 내보냄
+module.exports = fetchData;  // fetchData 함수를 내보
